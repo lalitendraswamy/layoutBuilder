@@ -1,0 +1,18 @@
+/* Write your CSS here */
+ul {
+  list-style-type: none;
+  padding: 0px;
+}
+
+nav {
+  background-color: #475569;
+  height: 25vh;
+  width: 100vw;
+  color: white;
+  padding: 1px;
+  padding-left: 100px;
+}
+
+input {
+  cursor: pointer;
+}
