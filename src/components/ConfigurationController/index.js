@@ -1,37 +1,18 @@
-import {Component} from 'react'
 import ConfigurationContext from '../../context/ConfigurationContext'
 import './index.css'
 
-class ConfigurationController extends Component {
-  state = {showContent: false, showLeftNavbar: true, showRightNavbar: true}
-
-  onToggleShowContent = () => {
-    this.setState(prevState => ({showContent: !prevState.showContent}))
-  }
-
-  onToggleShowLeftNavbar = () => {
-    this.setState(prevState => ({showLeftNavbar: !prevState.showLeftNavbar}))
-  }
-
-  onToggleShowRightNavbar = () => {
-    this.setState(prevState => ({showRightNavbar: !prevState.showRightNavbar}))
-  }
-
-  render() {
-    const {showContent, showLeftNavbar, showRightNavbar} = this.state
-    console.log(this.state)
-
-    return (
-      <ConfigurationContext.Provider
-        value={{
-          showContent,
-          showLeftNavbar,
-          showRightNavbar,
-          onToggleShowContent: this.onToggleShowContent,
-          onToggleShowLeftNavbar: this.onToggleShowLeftNavbar,
-          onToggleShowRightNavbar: this.onToggleShowRightNavbar,
-        }}
-      >
+const ConfigurationController = () => (
+  <ConfigurationContext.Consumer>
+    {value => {
+      const {
+        showContent,
+        showLeftNavbar,
+        showRightNavbar,
+        onToggleShowContent,
+        onToggleShowLeftNavbar,
+        onToggleShowRightNavbar,
+      } = value
+      return (
         <nav>
           <h1>Layout</h1>
 
@@ -40,7 +21,7 @@ class ConfigurationController extends Component {
               <li>
                 <label>
                   <input
-                    onChange={this.onToggleShowContent}
+                    onChange={onToggleShowContent}
                     type="checkbox"
                     checked={showContent}
                   />
@@ -51,7 +32,7 @@ class ConfigurationController extends Component {
               <li>
                 <label>
                   <input
-                    onChange={this.onToggleShowLeftNavbar}
+                    onChange={onToggleShowLeftNavbar}
                     type="checkbox"
                     checked={showLeftNavbar}
                   />
@@ -62,7 +43,7 @@ class ConfigurationController extends Component {
               <li>
                 <label>
                   <input
-                    onChange={this.onToggleShowRightNavbar}
+                    onChange={onToggleShowRightNavbar}
                     type="checkbox"
                     checked={showRightNavbar}
                   />
@@ -72,9 +53,9 @@ class ConfigurationController extends Component {
             </ul>
           </div>
         </nav>
-      </ConfigurationContext.Provider>
-    )
-  }
-}
+      )
+    }}
+  </ConfigurationContext.Consumer>
+)
 
 export default ConfigurationController

@@ -6,32 +6,43 @@ const Body = () => (
     {value => {
       const {showLeftNavbar, showRightNavbar, showContent} = value
       console.log(value)
+      console.log(showContent)
       return (
         <div className="body">
           {showLeftNavbar && (
             <div className="ln">
-              <p className="p">Left Navbar menu</p>
+              <h1 className="p">Left Navbar menu</h1>
               <ul>
-                <li>Item 1</li>
-                <li>Item 2</li>
-                <li>Item 3</li>
-                <li>Item 4</li>
+                <li>
+                  <p>Item 1</p>
+                </li>
+                <li>
+                  <p>Item 2</p>
+                </li>
+                <li>
+                  <p>Item 2</p>
+                </li>
+                <li>
+                  <p>Item 4</p>
+                </li>
               </ul>
             </div>
           )}
 
-          <div className="context">
-            <h1>Context</h1>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam.
-            </p>
-          </div>
+          {showContent && (
+            <div className="context">
+              <h1>Content</h1>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                enim ad minim veniam.
+              </p>
+            </div>
+          )}
 
           {showRightNavbar && (
             <div className="ln">
-              <p className="p">Right Navbar</p>
+              <h1 className="p">Right Navbar</h1>
               <div className="ad">Ad 1</div>
               <div className="ad">Ad 2</div>
             </div>
